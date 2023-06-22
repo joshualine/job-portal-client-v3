@@ -1,0 +1,79 @@
+.multiplePost {
+  flex: 9;
+}
+
+.multiplePostWrapper {
+  padding: 20px;
+  padding-right: 0;
+}
+
+.multiplePostImg {
+  width: 100%;
+  height: 300px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.multiplePostTitle {
+  text-align: center;
+  margin: 10px;
+  font-size: 28px;
+  font-family: "Lora", sans-serif;
+}
+
+.multiplePostEdit {
+  float: right;
+  font-size: 16px;
+}
+
+.multiplePostIcon {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.multiplePostIcon:first-child {
+  color: teal;
+}
+.multiplePostIcon:last-child {
+  color: tomato;
+}
+
+.multiplePostInfo {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  color: #be9656;
+  font-family: "Varela Round", Arial, Helvetica, sans-serif;
+}
+
+.multiplePostAuthor{
+  margin-left: 5px;
+}
+
+.multiplePostDesc {
+  color: #666;
+  font-size: 18px;
+  line-height: 25px;
+}
+
+.multiplePostDesc::first-letter {
+  margin-left: 20px;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.registerButton1 {
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: #EF7F1A;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+}
+.registerButton1:hover {
+  color: white;
+  background-color: #f8ae4c;
+}

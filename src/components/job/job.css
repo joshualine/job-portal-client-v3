@@ -1,0 +1,78 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+.fa-2x {
+font-size: 2em;
+}
+.fa {
+position: relative;
+display: table-cell;
+width: 60px;
+height: 36px;
+text-align: center;
+vertical-align: middle;
+font-size:20px;
+}
+
+body {
+  background-color: #eee
+}
+
+/* .card {
+  border: none;
+  border-radius: 10px
+} */
+
+.c-details span {
+  font-weight: 300;
+  font-size: 13px
+}
+
+.jobBadge {
+  background-color: #EF7F1A;
+  width: 80px;
+  height: 40px;
+  padding-bottom: 3px;
+  border-radius: 5px;
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.jobBadge:hover {
+  color: white;
+  background-color: #f8ae4c;
+  /* width: 80px;
+  height: 40px;
+  padding-bottom: 3px;
+  border-radius: 5px; */
+}
+
+.jobText1 {
+  font-size: 14px;
+  font-weight: 600
+}
+
+.jobText2 {
+  color: #a5aec0;
+}
+
+.jobCard1 {
+  box-shadow: 0 5px 8px -3px rgba(0, 0, 0, 0.25);
+}
+
+.ellipse {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* start showing ellipsis when 3rd line is reached */
+  white-space: pre-wrap; /* let the text wrap preserving spaces */
+}
+
+.jobComName {
+  font-weight: 600;
+  font-style: italic;
+}
+
