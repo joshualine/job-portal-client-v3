@@ -1,6 +1,7 @@
 
 import "./job.css"
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { LinkContainer } from 'react-router-bootstrap';
 
 const Job = () => {
   return (
@@ -14,9 +15,9 @@ const Job = () => {
               </div>
             </div>
             <div className="">
-              <Link to="/apply" style={{ textDecoration: "none" }}>
-                <h6 className="jobBadge">Apply</h6>
-              </Link>
+              <LinkContainer to="/apply" style={{ textDecoration: "none", backgroundColor:"#EF7F1A", color:"white" }}>
+                <button className="btn">Apply</button>
+              </LinkContainer>
             </div>
           </div>
           <div className="mt-5">

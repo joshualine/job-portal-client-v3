@@ -1,56 +1,46 @@
-// import { Link } from 'react-router-dom'
 import logo from '../../assets/proLogo.png'
-import  Hamburger  from '../../assets/hamburger.svg'
-import { useState } from 'react'
-import '../../App.css'
 import './navBar.css'
 
+import { Navbar, Nav, Container } from 'react-bootstrap';
+import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
+import { LinkContainer } from 'react-router-bootstrap';
+
 const NavBar = () => {
-
-  const [showNavbar, setShowNavbar] = useState(false)
-
-  const handleShowNavbar = () => {
-    setShowNavbar(!showNavbar)
-  }
-
-  const user = false;
-
   return (
-    <nav className="navbar bg-light sticky-top">
-      <div className="container">
-        <div className="logo">
-          <img src={logo} alt="react logo" />
-        </div>
-        <div className="menu-icon" onClick={handleShowNavbar}>
-          <img src={Hamburger} alt="react logo" />
-        </div>
-        <div className={`nav-elements  ${showNavbar && 'active'}`}>
-          <ul>
-            <li>
-            {/* <Link to="/login" style={{textDecoration: 'none'}}>
-              <div className="userSign">
-              <p>{user && "SignOut"}</p>
-              </div>
-            </Link> */}
-              <div className="userSign">
-              <p>{user && "SignOut"}</p>
-              </div>
-            </li>
-            <li>
-              {/* <Link to="/register" style={{textDecoration: 'none'}}>
-                <div className="userSign">
-                  <p>{!user && "Register"}</p>
-                </div>
-              </Link> */}
-                <div className="userSign">
-                  <button className='signUpButton'>{!user && "Login"}</button>
-                </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  )
-}
+    <nav className="sticky-top">
+      <Navbar bg='light' variant='light' expand='lg' collapseOnSelect>
+        <Container>
 
-export default NavBar
+          <LinkContainer to='/'>
+            <Navbar.Brand>
+              <div className="logo">
+                <img src={logo} alt="react logo" />
+              </div>
+            </Navbar.Brand>
+          </LinkContainer>
+
+          <Navbar.Toggle aria-controls='basic-navbar-nav' />
+          <Navbar.Collapse id='basic-navbar-nav'>
+            <Nav className='ms-auto'>
+
+              <LinkContainer to='/login'>
+                <Nav.Link>
+                  <FaSignInAlt /> Sign In
+                </Nav.Link>
+              </LinkContainer>
+
+              <LinkContainer to='/register' >
+                <Nav.Link>
+                  <FaSignOutAlt /> Sign Up
+                </Nav.Link>
+              </LinkContainer>
+
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </nav>
+  );
+};
+
+export default NavBar;
