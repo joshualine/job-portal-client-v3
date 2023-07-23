@@ -21,7 +21,7 @@ const Job = () => {
           </div>
           <div className="mt-5">
           <h3 className="heading">
-              Senior Product -
+              Product Designer -
               <br />
               
               <span className="jobComName">
@@ -40,6 +40,7 @@ const Job = () => {
           </div>
         </div>
       </div>
+
     </>
   )
 }
