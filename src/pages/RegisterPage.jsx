@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import FormContainer from '../components/FormContainer';
+import NavBar from '../components/navBar/NavBar';
 
 const RegisterPage = () => {
   const [name, setName] = useState('');
@@ -15,6 +16,8 @@ const RegisterPage = () => {
   };
 
   return (
+    <>
+    <NavBar />
     <FormContainer>
       <h1>Register</h1>
       <Form onSubmit={submitHandler}>
@@ -68,6 +71,7 @@ const RegisterPage = () => {
         </Col>
       </Row>
     </FormContainer>
+    </>
   )
 }
 
