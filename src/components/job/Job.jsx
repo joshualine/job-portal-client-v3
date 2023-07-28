@@ -13,7 +13,7 @@ const Job = () => {
     useEffect(() => {
         const getJobsData = async () => {
             const { data } = await axios.get('/api/jobs')
-            console.log(data)
+            // console.log(data)
             setJobs(data)
         }
         getJobsData()
@@ -40,17 +40,16 @@ const Job = () => {
               </div>
             </div>
             <div className="">
-              <LinkContainer to="/apply" style={{ textDecoration: "none", backgroundColor:"#EF7F1A", color:"white" }}>
+              <LinkContainer to={`jobs/${job.id}`} style={{ textDecoration: "none", backgroundColor:"#EF7F1A", color:"white" }}>
                 <button className="btn">Apply</button>
               </LinkContainer>
             </div>
           </div>
           <div className="mt-5">
           <h3 className="heading">
-              {job.title} -
+              {job.title}
               <br />
               <span className="jobComName">
-              Dellotte plc
               </span>
             </h3>
             <div className="mt-5">

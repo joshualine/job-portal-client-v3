@@ -2,8 +2,6 @@ import Job from '../job/Job'
 import './jobs.css'
 
 
-
-
 const Jobs = () => {
   return (
     <>

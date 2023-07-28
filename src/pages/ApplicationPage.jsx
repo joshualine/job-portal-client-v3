@@ -9,7 +9,7 @@ const ApplicationPage = () => {
     <>
       <NavBar />
       <ApplyJob />
-      <ApplicationForm />
+      {/* <ApplicationForm /> */}
       <Footer />
     </>
   )
