@@ -24,12 +24,6 @@ const Job = () => {
     {
 
       jobs.map(job => {
-        // return <p  key={job.id}>
-          
-        //     {job.title}
-        //     {job.description}
-
-        // </p>
 
       return <div className="col-md-4 " key={job.id}>
         <div className="card p-3 mb-2 jobCard1">

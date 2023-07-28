@@ -24,9 +24,9 @@ import LandingPage from "./pages/LandingPage.jsx";
 
 import ApplicationPage from "./pages/ApplicationPage";
 // import AdminDashboard from "./pages/AdminDashboard";
-// import AdminViewAppPage from "./pages/AdminViewAppPage";
+import AdminViewAppPage from "./pages/AdminViewAppPage";
 // import AdminOneJobView from "./components/adminOneJobView/AdminOneJobView";
-// import PostJobPage from "./pages/PostJobPage";
+import PostJobPage from "./pages/PostJobPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,6 +35,8 @@ const router = createBrowserRouter(
       <Route path='/login' element={<LoginPage />} />
       <Route path='/register' element={<RegisterPage />} />
       <Route path='/jobs/:id' element={<ApplicationPage />} />
+      <Route path='/jobs/post' element={<PostJobPage />} />
+      <Route path='/applications' element={<AdminViewAppPage />} />
     </Route>
   )
 );

@@ -1,79 +1,57 @@
 import './allApplications.css'
+import { LinkContainer } from 'react-router-bootstrap';
+
+import { useState, useEffect } from 'react'
+import axios from 'axios';
+
 
 const AllApplications = () => {
+
+  const [applications, setApplications] = useState([])
+
+    useEffect(() => {
+        const getApplicationsData = async () => {
+            const { data } = await axios.get('/api/applications')
+            // console.log(data)
+            setApplications(data)
+        }
+        getApplicationsData()
+    }, [])
+
   return (
     <>
-      <div className="header_fixed">
-        <table>
+        
+        <h1 className="display-2 text-center">Job Applications</h1>
+      return <div className="header_fixed" >
+        return <table>
           <thead>
             <tr>
               <th>S No.</th>
               <th>Name</th>
               <th>Email</th>
               <th>Phone No.</th>
-              <th>Job Applied to</th>
+              {/* <th>Job Applied to</th> */}
             </tr>
           </thead>
+          
           <tbody>
-            <tr>
+            {
+              applications.map(application => {
+
+            return <tr key={application.id}>
               <td>1</td>
-              <td>Rakhi Gupta</td>
-              <td>rakhigupta@gmail.com</td>
-              <td>08088736365</td>
-              <td>Product Designer - Dellotte plc</td>
+              <td>{application.first_name}</td>
+              <td>{application.email}</td>
+              <td>{application.phone}</td>
+              {/* <td>{application.jobId}</td> */}
             </tr>
-            <tr>
-              <td>2</td>
-              <td>Anjali</td>
-              <td>anjali@gmail.com</td>
-              <td>080887366777</td>
-              <td>Software Developer - 7Up</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Vejata Gupta</td>
-              <td>Vejata@gmail.com</td>
-              <td>080887366777</td>
-              <td>Driver - Dellotte plc</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Shweta</td>
-              <td>Shweta@gmail.com</td>
-              <td>080887366777</td>
-              <td>Driver - Dellotte plc</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Adarsh</td>
-              <td>Adarsh@gmail.com</td>
-              <td>080887366777</td>
-              <td>Driver - Dellotte plc</td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>Monti</td>
-              <td>Monti@gmail.com</td>
-              <td>080887366777</td>
-              <td>Driver - Dellotte plc</td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td>Arpit</td>
-              <td>Arpit@gmail.com</td>
-              <td>080887366777</td>
-              <td>Driver - Dellotte plc</td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td>Priya</td>
-              <td>priya@gmail.com</td>
-              <td>080887366777</td>
-              <td>Driver - Dellotte plc</td>
-            </tr>
+              })
+            }
+            
           </tbody>
         </table>
       </div>
+
     </>
   )
 }

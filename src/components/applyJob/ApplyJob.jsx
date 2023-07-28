@@ -26,7 +26,7 @@ const ApplyJob = () => {
 
   useEffect(() => {
 
-    const getSingleProductData = async () => {
+    const getSingleJobData = async () => {
         const { data } = await axios.get(`/api/jobs/${id}`)
         console.log(data)
 
@@ -38,12 +38,10 @@ const ApplyJob = () => {
         // for JobApplication
         setApplication(data.application)
 
-
-
     }
-    getSingleProductData()
+    getSingleJobData()
 
-},[id])
+  },[id])
 
 // to add application
 const addApplication = async (e) => {
@@ -67,8 +65,6 @@ const addApplication = async (e) => {
 
   return (
     <>
-    
-
       <div className="container">
         <div className="singlePost">
           <div className="singlePostWrapper">
