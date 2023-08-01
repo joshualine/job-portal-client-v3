@@ -13,6 +13,7 @@ const AdminPostJob = () => {
   // Post Job
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
+  const [location, setLocation] = useState('')
 
   
 
@@ -22,6 +23,7 @@ const addJob = async (e) => {
   let job = {
       title: title,
       description: description,
+      location: location,
   }
 
   
@@ -52,6 +54,14 @@ const addJob = async (e) => {
             onChange={(e) => setDescription(e.target.value)}
             type="text"
             placeholder="Write Description..."
+          />
+        <label>Location</label>
+        <input
+            className="applicationInput"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            type="text"
+            placeholder="Job Location..."
           />
         <button type="submit" className='badge2' style={{marginTop: '5px'}}>Post Job</button>
       </form>

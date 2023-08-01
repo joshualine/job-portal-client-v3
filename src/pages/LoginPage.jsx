@@ -23,7 +23,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate('/');
+      navigate('/admin');
     }
   }, [navigate, userInfo]);
 

@@ -29,6 +29,7 @@
 .multiplePostIcon {
   margin-left: 10px;
   cursor: pointer;
+  font-size: 18px;
 }
 
 .multiplePostIcon:first-child {
@@ -62,7 +63,7 @@
   font-size: 30px;
   font-weight: 600;
 }
-
+/* 
 .registerButton1 {
   margin-top: 20px;
   cursor: pointer;
@@ -76,4 +77,4 @@
 .registerButton1:hover {
   color: white;
   background-color: #f8ae4c;
-}
+} */

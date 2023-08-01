@@ -1,7 +1,28 @@
 import { Link } from "react-router-dom"
 import "./sideBar.css"
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useLogoutMutation } from "../../slices/usersApiSlice"
+import { logout } from "../../slices/authSlice"
 
 const SideBar = () => {
+  const { userInfo } = useSelector((state) => state.auth);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [logoutApiCall] = useLogoutMutation();
+
+  const logoutHandler = async () => {
+    try {
+      await logoutApiCall().unwrap();
+      dispatch(logout());
+      navigate('/');
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <>
       <div className="area"></div>
@@ -9,24 +30,34 @@ const SideBar = () => {
         <ul>
           <li>
             <a href="/admin">
+              <i className="fa fa-user fa-2x"></i>
+              <Link to="/admin" style={{ textDecoration: "none", color: "wheat" }}>
+                <span className="nav-text" >Admin</span>
+              </Link>
+            </a>
+          </li>
+          {/* <li>
+            <a href="/admin">
               <i className="fa fa-home fa-2x"></i>
               <Link to="/admin" style={{ textDecoration: "none", color: "wheat" }}>
                 <span className="nav-text" >Home</span>
               </Link>
             </a>
-          </li>
+          </li> */}
           <li className="has-subnav">
-            <a href="/add-job">
+            <a href="/jobs/post">
               <i className="fa fa-plus fa-2x"></i>
-              <Link to="/add-job" style={{ textDecoration: "none", color: "wheat" }}>
+              <Link to="/jobs/post" style={{ textDecoration: "none", color: "wheat" }}>
                 <span className="nav-text">Post Job</span>
               </Link>
             </a>
           </li>
           <li className="has-subnav">
             <a href="/applications">
-              <i className="fa fa-comments fa-2x"></i>
-              <span className="nav-text">Applications</span>
+              <i className="fa fa-clipboard fa-2x"></i>
+              <Link to="/applications" style={{ textDecoration: "none", color: "wheat" }}>
+                <span className="nav-text">All Applications</span>
+              </Link>
             </a>
           </li>
 
@@ -34,9 +65,9 @@ const SideBar = () => {
 
         <ul className="logout">
           <li>
-            <a href="/">
+            <a href="/" onClick={logoutHandler}>
               <i className="fa fa-power-off fa-2x"></i>
-              <span className="nav-text">Logout</span>
+              <span className="nav-text" onClick={logoutHandler}>Logout</span>
             </a>
           </li>
         </ul>

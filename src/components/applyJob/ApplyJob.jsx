@@ -20,9 +20,10 @@ const ApplyJob = () => {
 
   // JobApplication details
     const [application, setApplication] = useState([])
-    const [first_name, setFirst_Name] = useState('')
+    const [full_name, setFull_Name] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
+    const [location, setLocation] = useState('')
 
   useEffect(() => {
 
@@ -32,7 +33,7 @@ const ApplyJob = () => {
 
         setTitle(data.title)
         setDescription(data.description)
-        // setPublished(data.published)
+        setLocation(data.location)
         setCreatedAt(data.createdAt)
 
         // for JobApplication
@@ -50,9 +51,10 @@ const addApplication = async (e) => {
 
   let application = {
       job_id: id,
-      first_name: first_name,
+      full_name: full_name,
       phone: phone,
       email: email,
+      location: location,
   }
 
   
@@ -79,7 +81,7 @@ const addApplication = async (e) => {
             <div className="singlePostInfo">
               <span>
                 Location:
-                <b className="singlePostAuthor"> Lagos, Nigeria</b>
+                <b className="singlePostAuthor">{location}</b>
               </span>
               <span>Posted:
                 <b className="singlePostAuthor">
@@ -104,8 +106,8 @@ const addApplication = async (e) => {
           <label>Name</label>
           <input
             className="applicationInput"
-            value={first_name}
-            onChange={(e) => setFirst_Name(e.target.value)}
+            value={full_name}
+            onChange={(e) => setFull_Name(e.target.value)}
             type="name"
             placeholder="Full Name..."
           />
@@ -124,6 +126,14 @@ const addApplication = async (e) => {
             onChange={(e) => setEmail(e.target.value)}
             type="email"
             placeholder="Enter your Email..."
+          />
+          <label>Location</label>
+          <input
+            className="applicationInput"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            type="location"
+            placeholder="Enter your Location..."
           />
           <button type="submit" className="applicationButton">Apply</button>
         </form>
