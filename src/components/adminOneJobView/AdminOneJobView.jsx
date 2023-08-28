@@ -24,7 +24,6 @@ const AdminOneJobView = () => {
 
   useEffect(() => {
     const getSingleJobData = async () => {
-      // const { data } = await axios.get(`/api/jobs/${id}`)
       const { data } = await axios.get(`/api/jobs/${id}/applications`)
 
       const applicationData = data.applications
@@ -39,6 +38,16 @@ const AdminOneJobView = () => {
     getSingleJobData()
   }, [id])
 
+  const deleteJobData = async (id) => {
+    try {
+      await axios.delete(`/api/jobs/${id}`)
+      navigate('/admin')
+      toast.success("Successfully Deleted")
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <>
       <div className="container">
@@ -47,9 +56,10 @@ const AdminOneJobView = () => {
 
             <h1 className="multiplePostTitle">
               {title}
+
               <div className="multiplePostEdit">
-                <i className="multiplePostIcon far fa-trash-alt"><FaEdit />Edit</i>
-                <i className="multiplePostIcon far fa-trash-alt"><FaRemoveFormat />Delete</i>
+                <button className="btn btn-success" ><FaEdit /> Edit</button>
+                <button className="btn btn-danger mx-3" onClick={()=> deleteJobData(id)}><FaRemoveFormat /> delete</button>
               </div>
             </h1>
             <div className="multiplePostInfo">

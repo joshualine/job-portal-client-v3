@@ -1,18 +1,25 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import FormContainer from '../components/FormContainer';
 import NavBar from '../components/navBar/NavBar';
+import { toast } from 'react-toastify';
 
 const RegisterPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log('submit');
+    try {
+      toast.success("Welcome! A comfirmation email will be sent to you");
+      navigate('/');
+    } catch (err) {
+      toast.error("Invalid Credentials");
+    }
   };
 
   return (

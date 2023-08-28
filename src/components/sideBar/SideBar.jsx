@@ -52,14 +52,14 @@ const SideBar = () => {
               </Link>
             </a>
           </li>
-          <li className="has-subnav">
+          {/* <li className="has-subnav">
             <a href="/applications">
               <i className="fa fa-clipboard fa-2x"></i>
               <Link to="/applications" style={{ textDecoration: "none", color: "wheat" }}>
                 <span className="nav-text">All Applications</span>
               </Link>
             </a>
-          </li>
+          </li> */}
 
         </ul>
 
