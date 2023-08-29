@@ -58,10 +58,15 @@ const addApplication = async (e) => {
   }
 
   
-  const postMade = await axios.post(`/api/applications/${id}`, application);
-  if(postMade){
-    navigate('/')
-    toast.success("You successfully applied for the job")
+  try {
+    const postMade = await axios.post(`/api/applications/${id}`, application);
+    if (postMade) {
+      navigate('/');
+      toast.success("You successfully applied for the job");
+    }
+  } catch (error) {
+    console.error('Error applying for the job:', error);
+    // Handle the error state, display an error message, or take any other appropriate action
   }
 }
 

@@ -1,5 +1,5 @@
 import './adminPostJob.css'
-import ReactQuill from 'react-quill'
+// import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 
 import { useNavigate } from "react-router-dom"
@@ -27,10 +27,15 @@ const addJob = async (e) => {
   }
 
   
-  const postMade = await axios.post(`/api/jobs`, job);
-  if(postMade){
-    navigate('/')
-    toast.success("You successfully posted a job")
+  try {
+    const postMade = await axios.post(`/api/jobs`, job);
+    if (postMade) {
+      navigate('/');
+      toast.success("You successfully posted a job");
+    }
+  } catch (error) {
+    console.error('Error posting a job:', error);
+    // Handle the error state, display an error message, or take any other appropriate action
   }
 }
 

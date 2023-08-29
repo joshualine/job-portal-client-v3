@@ -24,19 +24,25 @@ const AdminOneJobView = () => {
 
   useEffect(() => {
     const getSingleJobData = async () => {
-      const { data } = await axios.get(`/api/jobs/${id}/applications`)
+      try {
+        const { data } = await axios.get(`/api/jobs/${id}/applications`);
 
-      const applicationData = data.applications
-      console.log(applicationData)
+        const applicationData = data.applications;
+        console.log(applicationData);
 
-      setTitle(data.title)
-      setDescription(data.description)
-      setCreatedAt(data.createdAt)
-      setLocation(data.location)
-      setApplications(data.applications)
-    }
-    getSingleJobData()
-  }, [id])
+        setTitle(data.title);
+        setDescription(data.description);
+        setCreatedAt(data.createdAt);
+        setLocation(data.location);
+        setApplications(data.applications);
+      } catch (error) {
+        console.error('Error fetching single job data:', error);
+        // Handle the error state, display an error message, or take any other appropriate action
+      }
+    };
+    
+    getSingleJobData();
+  }, [id]);
 
   const deleteJobData = async (id) => {
     try {

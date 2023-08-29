@@ -1,5 +1,5 @@
 import './allApplications.css'
-import { LinkContainer } from 'react-router-bootstrap';
+// import { LinkContainer } from 'react-router-bootstrap';
 import { Container } from 'react-bootstrap';
 
 import { useState, useEffect } from 'react'
@@ -12,12 +12,18 @@ const AllApplications = () => {
 
   useEffect(() => {
     const getApplicationsData = async () => {
-      const { data } = await axios.get('/api/applications')
-      // console.log(data)
-      setApplications(data)
-    }
-    getApplicationsData()
-  }, [])
+      try {
+        const { data } = await axios.get('/api/applications');
+        // console.log(data);
+        setApplications(data);
+      } catch (error) {
+        console.error('Error fetching applications data:', error);
+        // Handle the error state, display an error message, or take any other appropriate action
+      }
+    };
+
+    getApplicationsData();
+  }, []);
 
   return (
     <>

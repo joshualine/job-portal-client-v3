@@ -1,5 +1,5 @@
 import TimeAgo from 'timeago-react';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { LinkContainer } from 'react-router-bootstrap';
 
 import { useState, useEffect } from 'react'
@@ -10,12 +10,18 @@ const AdminJob = () => {
   const [jobs, setJobs] = useState([])
   useEffect(() => {
     const getJobsData = async () => {
-      const { data } = await axios.get('/api/jobs')
-      // console.log(data)
-      setJobs(data)
-    }
-    getJobsData()
-  }, [])
+      try {
+        const { data } = await axios.get('/api/jobs');
+        // console.log(data);
+        setJobs(data);
+      } catch (error) {
+        console.error('Error fetching jobs:', error);
+        // Handle the error state, display an error message, or take any other appropriate action
+      }
+    };
+
+    getJobsData();
+  }, []);
 
   return (
     <>

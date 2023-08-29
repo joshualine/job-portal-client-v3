@@ -14,12 +14,18 @@ const Job = () => {
 
   useEffect(() => {
     const getJobsData = async () => {
-      const { data } = await axios.get('/api/jobs')
-      console.log(data)
-      setJobs(data)
-    }
-    getJobsData()
-  }, [])
+      try {
+        const { data } = await axios.get('/api/jobs');
+        console.log(data);
+        setJobs(data);
+      } catch (error) {
+        console.error('Error fetching jobs data:', error);
+        // Handle the error state, display an error message, or take any other appropriate action
+      }
+    };
+
+    getJobsData();
+  }, []);
 
   return (
     <>
