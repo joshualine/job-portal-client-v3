@@ -1,81 +1,81 @@
-import './applyJob.css'
-import { useNavigate } from "react-router-dom"
-import { useEffect, useState } from 'react'
-// import { useHistory, useParams } from 'react-router'
-import { useParams } from 'react-router'
-import axios from 'axios'
+import './applyJob.css';
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import TimeAgo from 'timeago-react';
 import { toast } from 'react-toastify';
 
-
 const ApplyJob = () => {
-
-  const { id } = useParams()
+  const { id } = useParams();
   const navigate = useNavigate();
 
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  // const [published, setPublished] = useState(true)
-  const [createdAt, setCreatedAt] = useState('')
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [createdAt, setCreatedAt] = useState('');
 
   // JobApplication details
-    const [application, setApplication] = useState([])
-    const [full_name, setFull_Name] = useState('')
-    const [email, setEmail] = useState('')
-    const [phone, setPhone] = useState('')
-    const [location, setLocation] = useState('')
+  const [full_name, setFull_Name] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [location, setLocation] = useState('');
 
   useEffect(() => {
-
     const getSingleJobData = async () => {
-        const { data } = await axios.get(`/api/jobs/${id}`)
-        console.log(data)
+      try {
+        const response = await fetch(`/api/jobs/${id}`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
 
-        setTitle(data.title)
-        setDescription(data.description)
-        setLocation(data.location)
-        setCreatedAt(data.createdAt)
+        setTitle(data.title);
+        setDescription(data.description);
+        setLocation(data.location);
+        setCreatedAt(data.createdAt);
+      } catch (error) {
+        console.error('Error fetching single job data:', error);
+      }
+    };
+    getSingleJobData();
+  }, [id]);
 
-        // for JobApplication
-        setApplication(data.application)
+  const addApplication = async (e) => {
+    e.preventDefault();
 
-    }
-    getSingleJobData()
-
-  },[id])
-
-// to add application
-const addApplication = async (e) => {
-
-  e.preventDefault()
-
-  let application = {
+    let application = {
       job_id: id,
       full_name: full_name,
       phone: phone,
       email: email,
       location: location,
-  }
+    };
 
-  
-  try {
-    const postMade = await axios.post(`/api/applications/${id}`, application);
-    if (postMade) {
-      navigate('/');
-      toast.success("You successfully applied for the job");
+    try {
+      const response = await fetch(`/api/applications/${id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(application),
+      });
+
+      if (response.ok) {
+        navigate('/');
+        toast.success('You successfully applied for the job');
+      } else {
+        throw new Error('Network response was not ok');
+      }
+    } catch (error) {
+      console.error('Error applying for the job:', error);
+      // Handle the error state, display an error message, or take any other appropriate action
     }
-  } catch (error) {
-    console.error('Error applying for the job:', error);
-    // Handle the error state, display an error message, or take any other appropriate action
-  }
-}
+  };
 
   return (
     <>
       <div className="container">
         <div className="singlePost">
           <div className="singlePostWrapper">
-
             <h1 className="singlePostTitle">
               {title}
               <div className="singlePostEdit">
@@ -104,9 +104,7 @@ const addApplication = async (e) => {
         </div>
       </div>
 
-      {/* -------------------------------------------------- */}
       <div className="application">
-
         <form className="applicationForm" onSubmit={addApplication}>
           <label>Name</label>
           <input
@@ -142,10 +140,9 @@ const addApplication = async (e) => {
           />
           <button type="submit" className="applicationButton">Apply</button>
         </form>
-
       </div>
     </>
   )
 }
 
-export default ApplyJob
+export default ApplyJob;
