@@ -77,7 +77,7 @@ const addApplication = async (e) => {
           <div className="singlePostWrapper">
 
             <h1 className="singlePostTitle">
-            {title}
+              {title}
               <div className="singlePostEdit">
                 <i className="singlePostIcon far fa-edit"></i>
                 <i className="singlePostIcon far fa-trash-alt"></i>
@@ -91,7 +91,7 @@ const addApplication = async (e) => {
               <span>Posted:
                 <b className="singlePostAuthor">
                   <TimeAgo
-                    datetime={ createdAt }
+                    datetime={createdAt}
                     locale='vi'
                   />
                 </b>
@@ -104,7 +104,7 @@ const addApplication = async (e) => {
         </div>
       </div>
 
-{/* -------------------------------------------------- */}
+      {/* -------------------------------------------------- */}
       <div className="application">
 
         <form className="applicationForm" onSubmit={addApplication}>
@@ -142,7 +142,7 @@ const addApplication = async (e) => {
           />
           <button type="submit" className="applicationButton">Apply</button>
         </form>
-        
+
       </div>
     </>
   )

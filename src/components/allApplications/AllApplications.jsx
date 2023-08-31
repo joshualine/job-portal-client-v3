@@ -1,5 +1,4 @@
 import './allApplications.css'
-// import { LinkContainer } from 'react-router-bootstrap';
 import { Container } from 'react-bootstrap';
 
 import { useState, useEffect } from 'react'
@@ -35,11 +34,9 @@ const AllApplications = () => {
         <table>
           <thead>
             <tr>
-              {/* <th>S No.</th> */}
               <th>Name</th>
               <th>Email</th>
               <th>Phone No.</th>
-              {/* <th>Job Applied to</th> */}
             </tr>
           </thead>
 
@@ -48,11 +45,9 @@ const AllApplications = () => {
               applications.map(application => {
 
                 return <tr key={application.id}>
-                  {/* <td>1</td> */}
                   <td>{application.full_name}</td>
                   <td>{application.email}</td>
                   <td>{application.phone}</td>
-                  {/* <td>{application.jobId}</td> */}
                 </tr>
               })
             }

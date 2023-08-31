@@ -15,8 +15,10 @@ const SideBar = () => {
 
   const logoutHandler = async () => {
     try {
+      localStorage.clear();
       await logoutApiCall().unwrap();
       dispatch(logout());
+      
       navigate('/');
     } catch (err) {
       console.error(err);
