@@ -10,32 +10,24 @@ import axios from 'axios';
 
 const Job = () => {
 
-  const [jobs, setJobs] = useState([])
-
+  const [gainers, setGainers] = useState([]);
   useEffect(() => {
-    const getJobsData = async () => {
-      try {
-        const { data } = await axios.get('/api/jobs');
-        console.log(data);
-        setJobs(data);
-      } catch (error) {
-        console.error('Error fetching jobs data:', error);
-        // Handle the error state, display an error message, or take any other appropriate action
-      }
-    };
-
-    getJobsData();
+    fetch('https://job-portal-backend-3xwc.onrender.com/api/jobs').then(response => {
+      response.json().then(gainers => {
+        setGainers(gainers);
+        // console.log(gainers)
+      });
+    });
   }, []);
-
-  const arr = jobs.map((jobs)=>{
-    return (
-      <p key={jobs.id}>{jobs.title}</p>
-    )
-  })
 
   return (
     <>
-      <h1>heheheh</h1>
+      <h1>
+        {gainers.map(gainer =>(
+          <span className="featuredTitleDate" key={gainer.id}>  ({gainer.title})</span>
+        ))}
+        
+      </h1>
 
     </>
   )
