@@ -22,7 +22,7 @@ const ApplyJob = () => {
   useEffect(() => {
     const getSingleJobData = async () => {
       try {
-        const response = await fetch(`/api/jobs/${id}`);
+        const response = await fetch(`https://job-portal-backend-3xwc.onrender.com/api/jobs/${id}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -51,7 +51,7 @@ const ApplyJob = () => {
     };
 
     try {
-      const response = await fetch(`/api/applications/${id}`, {
+      const response = await fetch(`https://job-portal-backend-3xwc.onrender.com/api/applications/${id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
