@@ -8,8 +8,8 @@ import NavBar from "../components/navBar/NavBar"
 const LandingPage = () => {
   return (
     <>
-      <NavBar />
-      <Header />
+      {/* <NavBar />
+      <Header /> */}
       <Jobs />
       <Footer />
     </>

@@ -35,9 +35,7 @@ const Job = () => {
 
   return (
     <>
-      {
-arr
-      }
+      <h1>heheheh</h1>
 
     </>
   )
