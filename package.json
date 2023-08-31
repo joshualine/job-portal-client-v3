@@ -2,7 +2,6 @@
   "name": "y",
   "private": true,
   "version": "0.0.0",
-  "proxy": "https://job-portal-backend-3xwc.onrender.com",
   "type": "module",
   "scripts": {
     "dev": "vite",
