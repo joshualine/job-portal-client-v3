@@ -1,31 +1,30 @@
-import './adminOneJobView.css'
+import './adminOneJobView.css';
 import { FaRemoveFormat, FaEdit } from 'react-icons/fa';
-import { useNavigate } from "react-router-dom"
-import { useEffect, useState } from 'react'
-// import { useHistory, useParams } from 'react-router'
-import { useParams } from 'react-router'
-import axios from 'axios'
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import TimeAgo from 'timeago-react';
 import { toast } from 'react-toastify';
 import { Container } from 'react-bootstrap';
 
-
-
 const AdminOneJobView = () => {
-
-  const { id } = useParams()
+  const { id } = useParams();
   const navigate = useNavigate();
 
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [createdAt, setCreatedAt] = useState('')
-  const [location, setLocation] = useState('')
-  const [applications, setApplications] = useState([])
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [createdAt, setCreatedAt] = useState('');
+  const [location, setLocation] = useState('');
+  const [applications, setApplications] = useState([]);
 
   useEffect(() => {
     const getSingleJobData = async () => {
       try {
-        const { data } = await axios.get(`/api/jobs/${id}/applications`);
+        const response = await fetch(`https://job-portal-backend-3xwc.onrender.com/api/jobs/${id}/applications`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
 
         const applicationData = data.applications;
         console.log(applicationData);
@@ -40,17 +39,20 @@ const AdminOneJobView = () => {
         // Handle the error state, display an error message, or take any other appropriate action
       }
     };
-    
+
     getSingleJobData();
   }, [id]);
 
   const deleteJobData = async (id) => {
     try {
-      await axios.delete(`/api/jobs/${id}`)
-      navigate('/admin')
-      toast.success("Successfully Deleted")
+      await fetch(`https://job-portal-backend-3xwc.onrender.com/api/jobs/${id}`, {
+        method: 'DELETE',
+      });
+
+      navigate('/admin');
+      toast.success("Successfully Deleted");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
@@ -59,13 +61,11 @@ const AdminOneJobView = () => {
       <div className="container">
         <div className="multiplePost">
           <div className="multiplePostWrapper">
-
             <h1 className="multiplePostTitle">
               {title}
-
               <div className="multiplePostEdit">
                 <button className="btn btn-success" ><FaEdit /> Edit</button>
-                <button className="btn btn-danger mx-3" onClick={()=> deleteJobData(id)}><FaRemoveFormat /> delete</button>
+                <button className="btn btn-danger mx-3" onClick={() => deleteJobData(id)}><FaRemoveFormat /> delete</button>
               </div>
             </h1>
             <div className="multiplePostInfo">
@@ -84,13 +84,11 @@ const AdminOneJobView = () => {
             </div>
             <p className="multiplePostDesc">
               {description}
-
             </p>
           </div>
         </div>
       </div>
 
-      {/* -------------------Job Application Display--------------------- */}
       <div>
         <h1 className="multiplePostTitle text-center">{title} Job Applications</h1>
         {
@@ -99,7 +97,6 @@ const AdminOneJobView = () => {
               <table className='p-5'>
                 <thead>
                   <tr>
-                    {/* <th>S No.</th> */}
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone No.</th>
@@ -109,18 +106,15 @@ const AdminOneJobView = () => {
 
                 <tbody>
                   {
-                    applications.map(application => {
-
-                      return <tr key={application.id}>
-                        {/* <td>1</td> */}
+                    applications.map(application => (
+                      <tr key={application.id}>
                         <td>{application.full_name}</td>
                         <td>{application.email}</td>
                         <td>{application.phone}</td>
                         <td>{application.location}</td>
                       </tr>
-                    })
+                    ))
                   }
-
                 </tbody>
               </table>
             </div>
@@ -131,4 +125,4 @@ const AdminOneJobView = () => {
   )
 }
 
-export default AdminOneJobView
+export default AdminOneJobView;
