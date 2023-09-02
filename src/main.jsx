@@ -28,6 +28,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<LandingPage />} />
+          </Route>
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<RegisterPage />} />
             <Route path="jobs/:id" element={<ApplicationPage />} />
@@ -36,7 +37,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="admin" element={<AdminDashboard />} />
             <Route path="admin/jobs/:id" element={<AdminViewOnePage />} />
             <Route path="*" element={<NotFound />} />
-          </Route>
         </Routes>
       </BrowserRouter>
     </React.StrictMode>
