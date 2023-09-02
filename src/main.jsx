@@ -29,6 +29,7 @@ import AdminViewAppPage from "./pages/AdminViewAppPage";
 import PostJobPage from "./pages/PostJobPage";
 import AdminViewOnePage from './pages/AdminViewOnePage.jsx';
 import AdminDashboard from './pages/AdminDashboard.jsx';
+import NotFound from './components/NotFound.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -41,6 +42,7 @@ const router = createBrowserRouter(
       <Route path='/applications' element={<AdminViewAppPage />} />
       <Route path='/admin' element={<AdminDashboard />} />
       <Route path='/admin/jobs/:id' element={<AdminViewOnePage />} />
+      <Route path='*' element={<NotFound />} />
     </Route>
   )
 );

@@ -19,39 +19,32 @@ const AdminPostJob = () => {
   // to add job
   const addJob = async (e) => {
     e.preventDefault()
-    // let job = {
-    //   title: title,
-    //   description: description,
-    //   location: location,
-    // }
+    let job = {
+      title: title,
+      description: description,
+      location: location,
+    }
 
-    const response = await fetch('https://job-portal-backend-3xwc.onrender.com/api/jobs', {
+    try {
+      const response = await fetch('https://job-portal-backend-3xwc.onrender.com/api/jobs', {
       method: 'POST',
-      body: JSON.stringify({
-        title, description, location
-      }),
+      body: JSON.stringify(job),
       headers: { 'Content-Type': 'application/json' }
     })
 
     
-    if(response){
-      navigate('/');
+    if(response.ok){
+      navigate('/admin');
       toast.success("You successfully posted a job");
     } else {
       alert('failed to Add New Job')
     }
+    } catch (error) {
+      console.error('Error adding a new job:', error);
+      // Handle the error state, display an error message, or take any other appropriate action
+    }
+    
 
-
-    // try {
-    //   const postMade = await axios.post(`/api/jobs`, job);
-    //   if (postMade) {
-    //     navigate('/');
-    //     toast.success("You successfully posted a job");
-    //   }
-    // } catch (error) {
-    //   console.error('Error posting a job:', error);
-    //   // Handle the error state, display an error message, or take any other appropriate action
-    // }
   }
 
   return (
