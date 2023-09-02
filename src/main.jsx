@@ -42,7 +42,7 @@ const router = createBrowserRouter(
       <Route path='/applications' element={<AdminViewAppPage />} />
       <Route path='/admin' element={<AdminDashboard />} />
       <Route path='/admin/jobs/:id' element={<AdminViewOnePage />} />
-      {/* <Route path='/*' element={<NotFound />} /> */}
+      <Route path='*' element={<NotFound />} />
     </Route>
   )
 );
