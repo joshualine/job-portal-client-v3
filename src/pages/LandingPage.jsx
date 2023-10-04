@@ -9,9 +9,7 @@ const LandingPage = () => {
   return (
     <>
       <NavBar />
-      <Header />
       <Jobs />
-      <Footer />
     </>
   )
 }

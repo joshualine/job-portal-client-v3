@@ -6,6 +6,7 @@ import { useParams } from 'react-router';
 import TimeAgo from 'timeago-react';
 import { toast } from 'react-toastify';
 import { Container } from 'react-bootstrap';
+import { Link } from "react-router-dom"
 
 const AdminOneJobView = () => {
   const { id } = useParams();
@@ -20,7 +21,8 @@ const AdminOneJobView = () => {
   useEffect(() => {
     const getSingleJobData = async () => {
       try {
-        const response = await fetch(`https://job-portal-backend-3xwc.onrender.com/api/jobs/${id}/applications`);
+        // const response = await fetch(`https://job-portal-backend-3xwc.onrender.com/api/jobs/${id}/applications`);
+        const response = await fetch(`http://localhost:5000/api/jobs/${id}/applications`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -35,7 +37,7 @@ const AdminOneJobView = () => {
         setLocation(data.location);
         setApplications(data.applications);
       } catch (error) {
-        console.error('Error fetching single job data:', error);
+        console.error('Error fetching single transaction data:', error);
         // Handle the error state, display an error message, or take any other appropriate action
       }
     };
@@ -49,8 +51,8 @@ const AdminOneJobView = () => {
         method: 'DELETE',
       });
 
-      navigate('/admin');
-      toast.success("Successfully Deleted");
+      navigate('/user/transactions/3');
+      toast.success("Transaction Successful");
     } catch (error) {
       console.log(error);
     }
@@ -62,13 +64,17 @@ const AdminOneJobView = () => {
         <div className="multiplePost">
           <div className="multiplePostWrapper">
             <h1 className="multiplePostTitle">
-              {title}
+              {/* {title} */}
               <div className="multiplePostEdit">
-                <button className="btn btn-success" ><FaEdit /> Edit</button>
-                <button className="btn btn-danger mx-3" onClick={() => deleteJobData(id)}><FaRemoveFormat /> delete</button>
+                {/* <button className="btn btn-success" ><FaEdit /> Send Money</button> */}
+                <Link to="/user/addtransaction" style={{ textDecoration: "none" }}>
+                  <h6 className="btn btn-success"><FaEdit /> Send Money</h6>
+                </Link>
+                {/* <button className="btn btn-danger mx-3" onClick={() => deleteJobData(id)}><FaRemoveFormat /> delete</button> */}
               </div>
             </h1>
-            <div className="multiplePostInfo">
+
+            {/* <div className="multiplePostInfo">
               <span>
                 Location:
                 <b className="multiplePostAuthor">{location}</b>
@@ -81,16 +87,18 @@ const AdminOneJobView = () => {
                   />
                 </b>
               </span>
-            </div>
-            <p className="multiplePostDesc">
+            </div> */}
+
+            {/* <p className="multiplePostDesc">
               {description}
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
 
       <div>
-        <h1 className="multiplePostTitle text-center">{title} Job Applications</h1>
+        {/* <h1 className="multiplePostTitle text-center">{title} Transactions</h1> */}
+        <h1 className="multiplePostTitle text-center">Your Transactions</h1>
         {
           <Container>
             <div className="header_fixed" >
@@ -99,8 +107,8 @@ const AdminOneJobView = () => {
                   <tr>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Phone No.</th>
-                    <th>Applicant Location</th>
+                    <th>Account No.</th>
+                    <th>Transaction Type</th>
                   </tr>
                 </thead>
 

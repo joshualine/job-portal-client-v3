@@ -31,12 +31,13 @@ const SideBar = () => {
       <nav className="main-menu">
         <ul>
           <li>
-            <a href="/admin">
+            {/* <a href="/admin">
               <i className="fa fa-user fa-2x"></i>
               <Link to="/admin" style={{ textDecoration: "none", color: "wheat" }}>
-                <span className="nav-text" >Admin</span>
+                <span className="nav-text" >John Doe</span>
               </Link>
-            </a>
+            </a> */}
+            <i className="fa fa-user fa-2x"></i>
           </li>
           {/* <li>
             <a href="/admin">
@@ -46,14 +47,16 @@ const SideBar = () => {
               </Link>
             </a>
           </li> */}
-          <li className="has-subnav">
+
+          {/* <li className="has-subnav">
             <a href="/jobs/post">
               <i className="fa fa-plus fa-2x"></i>
               <Link to="/jobs/post" style={{ textDecoration: "none", color: "wheat" }}>
                 <span className="nav-text">Post Job</span>
               </Link>
             </a>
-          </li>
+          </li> */}
+
           {/* <li className="has-subnav">
             <a href="/applications">
               <i className="fa fa-clipboard fa-2x"></i>

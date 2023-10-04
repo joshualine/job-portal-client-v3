@@ -128,7 +128,7 @@ nav.main-menu li.active>a,
 .dashboard-page nav.dashboard-menu ul li.active a {
   color: #fff;
   /* background-color:#000000; */
-  background-color: #e67e22;
+  background-color: blue;
 }
 
 .area {

@@ -51,7 +51,7 @@ const ApplyJob = () => {
     };
 
     try {
-      const response = await fetch(`https://job-portal-backend-3xwc.onrender.com/api/applications/${id}`, {
+      const response = await fetch(`http://localhost:5000/api/applications/${id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

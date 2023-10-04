@@ -1,4 +1,4 @@
-import logo from '../../assets/proLogo.png'
+import logo from '../../assets/sanlam.png'
 import './navBar.css'
 
 import { Navbar, Nav, Container } from 'react-bootstrap';

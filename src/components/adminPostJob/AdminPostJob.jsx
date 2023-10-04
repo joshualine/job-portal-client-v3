@@ -27,30 +27,30 @@ const AdminPostJob = () => {
 
     try {
       const response = await fetch('https://job-portal-backend-3xwc.onrender.com/api/jobs', {
-      method: 'POST',
-      body: JSON.stringify(job),
-      headers: { 'Content-Type': 'application/json' }
-    })
+        method: 'POST',
+        body: JSON.stringify(job),
+        headers: { 'Content-Type': 'application/json' }
+      })
 
-    
-    if(response.ok){
-      navigate('/admin');
-      toast.success("You successfully posted a job");
-    } else {
-      alert('failed to Add New Job')
-    }
+
+      if (response.ok) {
+        navigate('/admin');
+        toast.success("You successfully posted a job");
+      } else {
+        alert('failed to Add New Job')
+      }
     } catch (error) {
       console.error('Error adding a new job:', error);
       // Handle the error state, display an error message, or take any other appropriate action
     }
-    
+
 
   }
 
   return (
     <>
       <form className='main1' onSubmit={addJob}>
-        <label>Description</label>
+        <label>Job Title</label>
         <input
           className="applicationInput"
           value={title}

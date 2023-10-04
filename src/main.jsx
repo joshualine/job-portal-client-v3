@@ -20,6 +20,7 @@ import PostJobPage from './pages/PostJobPage';
 import AdminViewOnePage from './pages/AdminViewOnePage';
 import AdminDashboard from './pages/AdminDashboard';
 import NotFound from './components/NotFound';
+import AddTransactions from './components/AddTransactions';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
@@ -34,7 +35,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="jobs/post" element={<PostJobPage />} />
             <Route path="applications" element={<AdminViewAppPage />} />
             <Route path="admin" element={<AdminDashboard />} />
-            <Route path="admin/jobs/:id" element={<AdminViewOnePage />} />
+            {/* <Route path="admin/jobs/:id" element={<AdminViewOnePage />} /> */}
+            <Route path="user/transactions/:id" element={<AdminViewOnePage />} />
+            <Route path="user/addtransaction" element={<AddTransactions />} />
+            
+
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

@@ -124,7 +124,7 @@
 .signUpButton {
   margin-top: 20px;
   cursor: pointer;
-  background-color: #EF7F1A;
+  background-color: blue;
   color: white;
   padding: 10px;
   border: none;
@@ -133,5 +133,5 @@
 }
 .signUpButton:hover {
   color: white;
-  background-color: #f8ae4c;
+  background-color: rgb(121, 121, 238);
 }
