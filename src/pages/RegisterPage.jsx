@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import FormContainer from '../components/FormContainer';
-import NavBar from '../components/navBar/NavBar';
 import { toast } from 'react-toastify';
 
 const RegisterPage = () => {
@@ -24,7 +23,6 @@ const RegisterPage = () => {
 
   return (
     <>
-    <NavBar />
     <FormContainer>
       <h1>Register</h1>
       <Form onSubmit={submitHandler}>
