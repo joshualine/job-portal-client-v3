@@ -78,10 +78,12 @@ const ApplyJob = () => {
           <div className="singlePostWrapper">
             <h1 className="singlePostTitle">
               {title}
-              <div className="singlePostEdit">
+              
+              {/* <div className="singlePostEdit">
                 <i className="singlePostIcon far fa-edit"></i>
                 <i className="singlePostIcon far fa-trash-alt"></i>
-              </div>
+              </div> */}
+
             </h1>
             <div className="singlePostInfo">
               <span>

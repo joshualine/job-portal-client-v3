@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 
-import { BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 
@@ -20,6 +20,7 @@ import PostJobPage from './pages/PostJobPage';
 import AdminViewOnePage from './pages/AdminViewOnePage';
 import AdminDashboard from './pages/AdminDashboard';
 import NotFound from './components/NotFound';
+import EditJobPage from './pages/EditJobPage';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
@@ -35,6 +36,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="applications" element={<AdminViewAppPage />} />
             <Route path="admin" element={<AdminDashboard />} />
             <Route path="admin/jobs/:id" element={<AdminViewOnePage />} />
+            <Route path="admin/jobs/edit/:id" element={<EditJobPage />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

@@ -31,9 +31,9 @@ const Job = () => {
             <div className="d-flex justify-content-between">
               <div className="d-flex flex-row align-items-center">
                 <div className="ms-2 c-details">
-                  <h6 className="mb-0">
+                  {/* <h6 className="mb-0">
                     {job.title}
-                  </h6>
+                  </h6> */}
                   <span>
                     <TimeAgo
                       datetime={job.createdAt}

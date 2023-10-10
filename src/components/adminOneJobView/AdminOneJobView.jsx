@@ -16,6 +16,7 @@ const AdminOneJobView = () => {
   const [createdAt, setCreatedAt] = useState('');
   const [location, setLocation] = useState('');
   const [applications, setApplications] = useState([]);
+  const [updateMode, setUpdateMode] = useState(false);
 
   useEffect(() => {
     const getSingleJobData = async () => {
@@ -56,22 +57,77 @@ const AdminOneJobView = () => {
     }
   }
 
+  const editJobData = async (id) => {
+    try {
+      await fetch(`https://job-portal-backend-3xwc.onrender.com/api/jobs/${id}`, {
+        method: 'GET',
+      });
+
+      navigate(`/admin/jobs/edit/${id}`);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handleUpdate = async () => {
+    try {
+      await fetch(`https://job-portal-backend-3xwc.onrender.com/api/jobs/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title,
+          description,
+          location,
+        }),
+      });
+      setUpdateMode(false);
+    } catch (err) {
+      alert("Failed to update job")
+    }
+  };
+
   return (
     <>
       <div className="container">
         <div className="multiplePost">
           <div className="multiplePostWrapper">
-            <h1 className="multiplePostTitle">
-              {title}
-              <div className="multiplePostEdit">
-                <button className="btn btn-success" ><FaEdit /> Edit</button>
-                <button className="btn btn-danger mx-3" onClick={() => deleteJobData(id)}><FaRemoveFormat /> delete</button>
-              </div>
-            </h1>
+
+            {updateMode ? (
+              <input
+                type="title"
+                value={title}
+                className="singlePostTitleInput"
+                autoFocus
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            ) : (
+
+              <h1 className="multiplePostTitle">
+                {title}
+                <div className="multiplePostEdit">
+                <button className="btn btn-success" onClick={() => setUpdateMode(true)}><FaEdit /> Edit</button>
+
+                </div>
+              </h1>
+            )}
+
+
             <div className="multiplePostInfo">
               <span>
                 Location:
-                <b className="multiplePostAuthor">{location}</b>
+
+                {updateMode ? (
+                  <textarea
+                    className="singlePostDescInput"
+                    value={location}
+                    onChange={(e) => setDescription(e.target.value)}
+                    rows="1"
+                  />
+                ) : (
+                  <b className="multiplePostAuthor">{location}</b>
+                )}
               </span>
               <span>Posted:
                 <b className="singlePostAuthor">
@@ -82,15 +138,25 @@ const AdminOneJobView = () => {
                 </b>
               </span>
             </div>
-            <p className="multiplePostDesc">
-              {description}
-            </p>
+
+            {updateMode ? (
+              <textarea
+                className="singlePostDescInput form-control"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                rows="18"
+              />
+            ) : (
+              <p className="singlePostDesc">{description}</p>
+            )}
+
           </div>
         </div>
       </div>
 
       <div>
         <h1 className="multiplePostTitle text-center">{title} Job Applications</h1>
+
         {
           <Container>
             <div className="header_fixed" >
@@ -117,9 +183,18 @@ const AdminOneJobView = () => {
                   }
                 </tbody>
               </table>
+
             </div>
+
           </Container>
+
         }
+
+        <div className="container">
+          {updateMode ? <button className="btn btn-success" onClick={handleUpdate}><FaEdit /> Update</button> : <>.</> }
+          
+          <button className="btn btn-danger mx-3" onClick={() => deleteJobData(id)}><FaRemoveFormat /> delete</button>
+        </div>
       </div>
     </>
   )

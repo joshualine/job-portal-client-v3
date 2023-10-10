@@ -4,6 +4,7 @@ import 'react-quill/dist/quill.snow.css'
 import { useNavigate } from "react-router-dom"
 import { useState } from 'react'
 import { toast } from 'react-toastify';
+import Editor from '../Editor';
 
 const AdminPostJob = () => {
 
@@ -60,13 +61,17 @@ const AdminPostJob = () => {
         />
 
         <label>Description</label>
-        <input
-          className="applicationInput"
+        <textarea
+          className="applicationInput form-control"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           type="text"
+          rows="18"
           placeholder="Write Description..."
         />
+        
+        {/* <Editor value={description} onChange={setDescription} /> */}
+
         <label>Location</label>
         <input
           className="applicationInput"
